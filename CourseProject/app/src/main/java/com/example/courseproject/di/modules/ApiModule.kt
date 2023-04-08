@@ -20,12 +20,14 @@ class ApiModule {
     @Named("baseUrl")
     @Provides
     fun baseUrl(): String = "https://api.github.com/"
+
     @Singleton
     @Provides
     fun gson() = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .excludeFieldsWithoutExposeAnnotation()
         .create()
+
     @Singleton
     @Provides
     fun api(@Named("baseUrl") baseUrl: String, gson: Gson): IDataSource =

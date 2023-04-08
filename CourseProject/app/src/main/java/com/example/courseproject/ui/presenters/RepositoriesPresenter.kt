@@ -1,6 +1,6 @@
 package com.example.courseproject.ui.presenters
 
-import android.annotation.SuppressLint
+
 import com.example.courseproject.domain.repo.ReposItemView
 import com.example.courseproject.domain.repo.retrofit.IGithubRepositoriesRepo
 import com.example.courseproject.entity.GithubRepository
@@ -12,13 +12,12 @@ import io.reactivex.rxjava3.core.Scheduler
 import moxy.MvpPresenter
 import javax.inject.Inject
 
-class RepositoriesPresenter(
-    val mainThreadScheduler: Scheduler
-) :
-    MvpPresenter<UsersView>() {
+class RepositoriesPresenter: MvpPresenter<UsersView>() {
 
     @Inject
-    lateinit var usersRepo: IGithubRepositoriesRepo
+    lateinit var mainThreadScheduler: Scheduler
+    @Inject
+    lateinit var repositoriesRepo: IGithubRepositoriesRepo
     @Inject
     lateinit var router:Router
 
@@ -35,7 +34,7 @@ class RepositoriesPresenter(
 
     val repositoriesListPresenter = RepositoriesListPresenter()
 
-    @SuppressLint("SuspiciousIndentation")
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.init()
@@ -43,8 +42,8 @@ class RepositoriesPresenter(
     }
 
     fun loadRepositories(currentUser: GithubUser) {
-
-        usersRepo.getRepositories(currentUser)
+//App.instance.appComponent.inject(this)
+        repositoriesRepo.getRepositories(currentUser)
             .observeOn(mainThreadScheduler)
             .subscribe({ repos ->
                 repositoriesListPresenter.repositories.clear()
@@ -63,7 +62,11 @@ class RepositoriesPresenter(
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
 
+        viewState.release()
+    }
     fun backPressed(): Boolean {
         router.replaceScreen(AndroidScreens().users())
         return true

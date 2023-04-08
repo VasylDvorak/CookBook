@@ -10,7 +10,6 @@ import com.example.courseproject.ui.presenters.RepositListPresenter
 class RepositoriesRVAdapter(val presenter: RepositListPresenter) :
     RecyclerView.Adapter<RepositoriesRVAdapter.ViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
             ItemRepositoryBinding.inflate(

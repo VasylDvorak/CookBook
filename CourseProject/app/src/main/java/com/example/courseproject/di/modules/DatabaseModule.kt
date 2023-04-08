@@ -3,8 +3,7 @@ package com.example.courseproject.di.modules
 import androidx.room.Room
 import com.example.courseproject.App
 import com.example.courseproject.domain.cache.IGithubPictureCache
-import com.example.courseproject.domain.cache.IGithubRepositoriesCache
-import com.example.courseproject.domain.cache.IGithubUsersCache
+
 import com.example.courseproject.domain.cache.room.RoomGithubPictureCache
 import com.example.courseproject.domain.cache.room.RoomGithubRepositoriesCache
 import com.example.courseproject.domain.cache.room.RoomGithubUsersCache
@@ -29,14 +28,7 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun roomGithubPictureCache(): RoomGithubPictureCache = RoomGithubPictureCache()
-    @Singleton
-    @Provides
-    fun repositoriesCache(): IGithubRepositoriesCache =  RoomGithubRepositoriesCache()
 
-
-    @Singleton
-    @Provides
-    fun usersCache(): IGithubUsersCache= RoomGithubUsersCache()
 
     @Singleton
     @Provides
