@@ -40,8 +40,8 @@ interface PictureDao {
     @Query("SELECT * FROM RoomGithubPicture")
     fun getAll(): List<RoomGithubPicture>
 
-    @Query("SELECT * FROM RoomGithubPicture WHERE id = :id")
-    fun findForUser(id: String): RoomGithubPicture
+    @Query("SELECT * FROM RoomGithubPicture WHERE idCategory = :idCategory")
+    fun findForUser(idCategory: String): RoomGithubPicture
 
 
 }

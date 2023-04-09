@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Environment
-import com.example.courseproject.entity.GithubUser
+import com.example.courseproject.entity.categories.GithubUser
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -16,10 +16,10 @@ class SaveURLtoFile {
 
     @SuppressLint("SuspiciousIndentation")
     fun saveInFile(user: GithubUser): String {
-        while (user.avatar_url == null) {
+        while (user.strCategoryThumb == null) {
         }
-        bitmap = getBitmapFromURL(user.avatar_url)
-        return saveImage(bitmap, user.login)
+        bitmap = getBitmapFromURL(user.strCategoryThumb)
+        return saveImage(bitmap, user.strCategory)
     }
 
     private fun saveImage(bitmap: Bitmap?, login: String): String {

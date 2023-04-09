@@ -9,9 +9,13 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -19,7 +23,7 @@ import javax.inject.Singleton
 class ApiModule {
     @Named("baseUrl")
     @Provides
-    fun baseUrl(): String = "https://api.github.com/"
+    fun baseUrl(): String = "https://themealdb.com/"
 
     @Singleton
     @Provides
@@ -34,11 +38,28 @@ class ApiModule {
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+           // .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(createOkHttpClient(PODInterceptor()))
             .build()
             .create(IDataSource::class.java)
 
     @Singleton
     @Provides
     fun networkStatus(app: App): INetworkStatus = AndroidNetworkStatus(app)
+
+    private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {
+        val httpClient = OkHttpClient.Builder()
+        httpClient.addInterceptor(interceptor)
+        httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        return httpClient.build()
+    }
+
+    inner class PODInterceptor : Interceptor {
+
+        @Throws(IOException::class)
+        override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
+            return chain.proceed(chain.request())
+        }
+    }
 }

@@ -2,7 +2,7 @@ package com.example.courseproject.ui.presenters
 
 import com.github.terrakok.cicerone.Router
 import com.example.courseproject.domain.repo.IGithubUsersRepo
-import com.example.courseproject.entity.GithubUser
+import com.example.courseproject.entity.categories.GithubUser
 import com.example.courseproject.ui.AndroidScreens
 import com.example.courseproject.ui.interfaces.UsersView
 import com.example.courseproject.ui.users.UserItemView
@@ -25,12 +25,13 @@ lateinit var router:Router
         override fun getCount() = users.size
         override fun bindView(view: UserItemView) {
             val user = users[view.pos]
-            user.login.let { view.setName(it) }
-            user.avatar_url?.let {
+            user.strCategory.let { view.setName(it) }
+            user.strCategoryThumb?.let {
                 view.loadAvatar(it)
             }
         }
     }
+
 
     val usersListPresenter = UsersListPresenter()
 
@@ -66,7 +67,7 @@ lateinit var router:Router
 viewState.release()
     }
 
-    fun backPressed(): Boolean {
+   fun backPressed(): Boolean {
         router.replaceScreen(AndroidScreens().users())
         return true
     }

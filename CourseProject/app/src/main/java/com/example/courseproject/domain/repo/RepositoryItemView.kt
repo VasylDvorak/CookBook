@@ -5,5 +5,6 @@ interface RepositoryItemView {
     var pos: Int
 }
 interface ReposItemView : RepositoryItemView  {
-    fun setName (text: String? )
+    fun setName (text: String )
+    fun loadAvatar(url:String)
 }

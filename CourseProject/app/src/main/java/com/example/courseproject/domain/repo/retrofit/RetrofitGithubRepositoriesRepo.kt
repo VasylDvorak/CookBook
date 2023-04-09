@@ -4,7 +4,7 @@ import com.example.courseproject.App
 import com.example.courseproject.domain.api.IDataSource
 import com.example.courseproject.domain.cache.room.RoomGithubRepositoriesCache
 import com.example.courseproject.domain.network.INetworkStatus
-import com.example.courseproject.entity.GithubUser
+import com.example.courseproject.entity.categories.GithubUser
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 

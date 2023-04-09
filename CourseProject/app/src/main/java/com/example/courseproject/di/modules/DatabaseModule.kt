@@ -7,6 +7,7 @@ import com.example.courseproject.domain.cache.IGithubPictureCache
 import com.example.courseproject.domain.cache.room.RoomGithubPictureCache
 import com.example.courseproject.domain.cache.room.RoomGithubRepositoriesCache
 import com.example.courseproject.domain.cache.room.RoomGithubUsersCache
+import com.example.courseproject.domain.cache.room.RoomRecipeCache
 import com.example.courseproject.entity.room.Database
 import dagger.Module
 import dagger.Provides
@@ -24,6 +25,9 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun roomGithubRepositoriesCache(): RoomGithubRepositoriesCache = RoomGithubRepositoriesCache()
+    @Singleton
+    @Provides
+    fun roomGithubRecipeCache(): RoomRecipeCache = RoomRecipeCache()
 
     @Singleton
     @Provides

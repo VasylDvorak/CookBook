@@ -19,7 +19,13 @@
     <string name="id">\ID: \</string>
     <string name="repos_information">\Имя репозитория: \</string>
     <string name="fork_count">\Количество форков: \</string>
-    <string name="users_list">Список пользователей</string>
-    <string name="repositories_list">Список репозиториев</string>
+    <string name="users_list">List all meal categories</string>
+    <string name="repositories_list">Recipes</string>
+    <string name="recipe_title">RECIPE</string>
+    <string name="name_of_meal">Name of meal</string>
+    <string name="area_meal">Area meal</string>
+    <string name="ingredients">ingredients</string>
+    <string name="instruction">instruction</string>
+    <string name="play_movie">play movie</string>
 
 </resources>

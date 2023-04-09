@@ -2,13 +2,25 @@ package com.example.courseproject.ui.repositories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courseproject.databinding.ItemRepositoryBinding
+import com.example.courseproject.databinding.ItemUserBinding
+import com.example.courseproject.domain.image.IImageLoader
 import com.example.courseproject.domain.repo.ReposItemView
 import com.example.courseproject.ui.presenters.RepositListPresenter
+import com.example.courseproject.ui.users.UserItemView
+import javax.inject.Inject
 
 class RepositoriesRVAdapter(val presenter: RepositListPresenter) :
     RecyclerView.Adapter<RepositoriesRVAdapter.ViewHolder>() {
+
+
+
+
+
+    @Inject
+    lateinit var imageLoader: IImageLoader<ImageView>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -31,13 +43,15 @@ class RepositoriesRVAdapter(val presenter: RepositListPresenter) :
 
     inner class ViewHolder(val vb: ItemRepositoryBinding) :
         RecyclerView.ViewHolder(vb.root), ReposItemView {
-        override fun setName(text: String?) = with(vb) {
-            nameRepository.text = text
+        override var pos = -1
+        override fun setName(text: String) = with(vb) {
+            tvLogin.text = text
         }
 
-        override var pos = -1
 
+        override fun loadAvatar(url: String) {
+            imageLoader.loadInto(url, vb.ivAvatar)
+        }
 
     }
 }
-

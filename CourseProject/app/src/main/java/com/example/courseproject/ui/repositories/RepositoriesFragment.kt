@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.courseproject.App
 import com.example.courseproject.databinding.FragmentRepositoriesBinding
 import com.example.courseproject.di.repository.RepositorySubcomponent
-import com.example.courseproject.entity.GithubUser
+import com.example.courseproject.entity.categories.GithubUser
 import com.example.courseproject.ui.interfaces.BackButtonListener
 import com.example.courseproject.ui.interfaces.UsersView
 import com.example.courseproject.ui.presenters.RepositoriesPresenter
@@ -65,7 +65,9 @@ class RepositoriesFragment : MvpAppCompatFragment(), UsersView, BackButtonListen
         vb.apply {
             rvRepositories.layoutManager = LinearLayoutManager(context)
             currentUser.let { presenter.loadRepositories(it) }
-            adapter = RepositoriesRVAdapter(presenter.repositoriesListPresenter)
+            adapter = RepositoriesRVAdapter(presenter.repositoriesListPresenter).apply {
+                repositorySubcomponent?.inject(this)
+            }
             vb.rvRepositories.adapter = adapter
         }
     }

@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class GithubPicture(
-    @Expose var id: String,
-    @Expose var avatar_url: String,
+    @Expose var idCategory: String,
+    @Expose var strCategoryThumb: String,
     @Expose var local_path: String
 ) : Parcelable

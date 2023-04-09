@@ -4,7 +4,7 @@ import android.os.Environment
 import com.example.courseproject.App
 import com.example.courseproject.domain.cache.IGithubPictureCache
 import com.example.courseproject.entity.GithubPicture
-import com.example.courseproject.entity.GithubUser
+import com.example.courseproject.entity.categories.GithubUser
 import com.example.courseproject.entity.room.Database
 import com.example.courseproject.entity.room.RoomGithubPicture
 import io.reactivex.rxjava3.core.Single
@@ -23,7 +23,7 @@ class RoomGithubPictureCache : IGithubPictureCache {
 
         val roomPicture = users.map {
             RoomGithubPicture(
-                it.id, it.avatar_url ?: "", SaveURLtoFile().saveInFile(it)
+                it.idCategory, it.strCategoryThumb ?: "", SaveURLtoFile().saveInFile(it)
             )
         }
         database.pictureDao.insert(roomPicture)
@@ -33,7 +33,7 @@ class RoomGithubPictureCache : IGithubPictureCache {
     override fun fromDataBaseData(): Single<List<GithubPicture>> {
         return Single.fromCallable {
             database.pictureDao.getAll().map {
-                GithubPicture(it.id, it.avatar_url, it.local_path)
+                GithubPicture(it.idCategory, it.strCategoryThumb, it.local_path)
             }
         }
     }
