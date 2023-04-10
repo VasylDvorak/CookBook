@@ -7,11 +7,11 @@ plugins {
 
 
 android {
-    namespace 'com.example.courseproject'
+    namespace 'com.example.cookbook'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.courseproject"
+        applicationId "com.example.cookbook"
         minSdk 31
         targetSdk 33
         versionCode 1

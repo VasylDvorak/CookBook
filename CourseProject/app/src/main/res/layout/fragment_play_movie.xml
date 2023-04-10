@@ -8,5 +8,14 @@
         android:id="@+id/web_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/empty_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_link"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
 
 </FrameLayout>

@@ -2,25 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/recipe_title"
-        android:textColor="@android:color/system_accent1_800"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="wrap_content"
+    android:padding="@dimen/recipe_padding">
 
     <ImageView
         android:id="@+id/photo_meal"
         android:layout_width="0dp"
         android:layout_height="@dimen/image_recipe_image_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent=".5" />
 
     <TextView
@@ -82,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:cardBackgroundColor="#E1FDFB"
-        app:layout_constraintHeight_percent=".2"
+        app:layout_constraintHeight_percent=".22"
         app:layout_constraintTop_toBottomOf="@+id/photo_meal">
     <ScrollView
         android:layout_width="match_parent"
