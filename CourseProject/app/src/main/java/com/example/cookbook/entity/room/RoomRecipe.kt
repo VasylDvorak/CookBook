@@ -9,11 +9,11 @@ import androidx.room.PrimaryKey
         entity = RoomMenu::class,
         parentColumns = ["idMeal"],
         childColumns = ["idMeal"],
-        onDelete = ForeignKey.CASCADE
+        onDelete = ForeignKey.NO_ACTION
     )]
 )
 data class RoomRecipe (
-    @PrimaryKey var idMeal: String,
+    @PrimaryKey  var idMeal: String,
     var dateModified: String?,
     var strArea: String?,
     var strCategory: String?,

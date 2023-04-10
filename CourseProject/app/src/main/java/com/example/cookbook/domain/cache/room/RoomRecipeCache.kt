@@ -80,7 +80,7 @@ class RoomRecipeCache : IRecipeCache {
                                 )
                             }
 
-                            database.recipeDao.insert(roomRecipes!!)
+                          database.recipeDao.insert(roomRecipes!!)
                         meals
 
                     }
@@ -93,9 +93,8 @@ class RoomRecipeCache : IRecipeCache {
 
     override fun fromDataBaseData(menu: Menu): Single<List<Meal>> {
         return Single.fromCallable {
-            menu.idMeal
 
-         val recipeFromDB = database.recipeDao.findMenuItem(menu.idMeal).map {
+         val recipeFromDB = database.recipeDao.findRecipe(menu.idMeal).map {
                 Meal(
                     it?.idMeal ?: "",
                     it?.dateModified ?: "",

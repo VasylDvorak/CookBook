@@ -1,5 +1,6 @@
 package com.example.cookbook.entity.room.dao
 
+
 import androidx.room.*
 import com.example.cookbook.entity.room.RoomRecipe
 
@@ -8,37 +9,37 @@ import com.example.cookbook.entity.room.RoomRecipe
 interface RecipeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(recipe: RoomRecipe)
+    fun insert(itemRecipe: RoomRecipe)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg recipes: RoomRecipe)
+    fun insert(vararg recipe: RoomRecipe)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(recipes: List<RoomRecipe>)
+    fun insert(recipe: List<RoomRecipe>)
 
     @Update
-    fun update(recipe: RoomRecipe)
+    fun update(itemRecipe: RoomRecipe)
 
     @Update
-    fun update(vararg recipes: RoomRecipe)
+    fun update(vararg recipe: RoomRecipe)
 
     @Update
-    fun update(recipes: List<RoomRecipe>)
+    fun update(recipe: List<RoomRecipe>)
 
     @Delete
-    fun delete(recipe: RoomRecipe)
+    fun delete(itemRecipe: RoomRecipe)
 
     @Delete
-    fun delete(vararg recipes: RoomRecipe)
+    fun delete(vararg recipe: RoomRecipe)
 
     @Delete
-    fun delete(recipes: List<RoomRecipe>)
+    fun delete(recipe: List<RoomRecipe>)
 
     @Query("SELECT * FROM RoomRecipe")
     fun getAll(): List<RoomRecipe>
 
     @Query("SELECT * FROM RoomRecipe WHERE idMeal = :idMeal")
-    fun findMenuItem(idMeal: String): List<RoomRecipe>
+    fun findRecipe(idMeal: String): List<RoomRecipe>
 
 
 }

@@ -20,7 +20,7 @@ abstract class Database : RoomDatabase() {
     abstract val pictureDao: PictureDao
 
     companion object {
-        const val DB_NAME = "database.db"
+        const val DB_NAME = "database_cookbook.db"
 
     }
 

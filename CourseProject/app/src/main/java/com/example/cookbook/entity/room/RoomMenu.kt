@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
         entity = RoomCategory::class,
         parentColumns = ["idCategory"],
         childColumns = ["idCategory"],
-        onDelete = ForeignKey.CASCADE
+        onDelete = ForeignKey.NO_ACTION
     )]
 )
 

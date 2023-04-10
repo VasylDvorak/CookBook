@@ -48,7 +48,6 @@ class RoomMenuCache : IMenuCache {
     override fun fromDataBaseData(category: Category): Single<List<Menu>> {
         return Single.fromCallable {
             val roomCategory = category.strCategory.let { database.categoriesDao.findByCategory(it) }
-
             database.menuDao.findForCategory(roomCategory.idCategory).map {
                 Menu(it.idMeal, it.strMeal, it.strMealThumb)
             }

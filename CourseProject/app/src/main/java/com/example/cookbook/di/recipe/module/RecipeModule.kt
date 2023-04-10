@@ -2,13 +2,19 @@ package com.example.cookbook.di.recipe.module
 
 
 import com.example.cookbook.App
+import com.example.cookbook.di.menu.IMenuScopeContainer
+import com.example.cookbook.di.menu.MenuScope
 import com.example.cookbook.di.recipe.IRecipeScopeContainer
 import com.example.cookbook.di.recipe.RecipeScope
 import com.example.cookbook.domain.api.IDataSource
+import com.example.cookbook.domain.cache.IMenuCache
 import com.example.cookbook.domain.cache.IRecipeCache
+import com.example.cookbook.domain.cache.room.RoomMenuCache
 import com.example.cookbook.domain.cache.room.RoomRecipeCache
 import com.example.cookbook.domain.network.INetworkStatus
+import com.example.cookbook.domain.repo.retrofit.IMenuRepo
 import com.example.cookbook.domain.repo.retrofit.IRecipeRepo
+import com.example.cookbook.domain.repo.retrofit.RetrofitMenuRepo
 import com.example.cookbook.domain.repo.retrofit.RetrofitRecipeRepo
 import dagger.Module
 import dagger.Provides
