@@ -25,7 +25,7 @@ class RecipePresenter : MvpPresenter<RecipeView>() {
     @Inject
     lateinit var router: Router
     private var currentRecipe: Meal = Meal()
-
+    private val formIngredientsInstruction = FormIngredientsInstruction()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -45,6 +45,8 @@ class RecipePresenter : MvpPresenter<RecipeView>() {
                     currentRecipe = recipe.get(0)
 
                     viewState.showRecipe(currentRecipe)
+                    showIngredients()
+                    showInstruction()
             }     else{
                     showError()
             }
@@ -67,15 +69,19 @@ class RecipePresenter : MvpPresenter<RecipeView>() {
         return true
     }
 
-    fun ingredients()= RecipeIngredients().ingredientsList(currentRecipe)
+    private fun showInstruction() {
+        viewState.showInstruction(formIngredientsInstruction
+            .formInstructionText(currentRecipe.strInstructions?:""))
+    }
+   private fun showIngredients() {
+        viewState.showIngredients(formIngredientsInstruction.ingredientsList(currentRecipe))
+    }
 
     fun playMovie() {
         currentRecipe.strYoutube?.let{
             router.navigateTo(AndroidScreens().playMovie(it))
         }
-
     }
-
 
     fun showError(){
         val context = App.instance.applicationContext

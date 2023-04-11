@@ -1,12 +1,13 @@
 package com.example.cookbook.ui.recipe_fragment
 
+import android.graphics.Typeface
 import android.graphics.Typeface.BOLD
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import com.example.cookbook.domain.entity.recipe.Meal
 
-class RecipeIngredients {
+class FormIngredientsInstruction {
     fun ingredientsList(currentRecipe: Meal): SpannableStringBuilder {
         var stringsIngredientsList: MutableList<Pair<String, String>> = mutableListOf()
         stringsIngredientsList.add(Pair(currentRecipe.strIngredient1 ?: "", currentRecipe.strMeasure1 ?: ""))
@@ -44,5 +45,13 @@ class RecipeIngredients {
         outIngredients.append(totalString)
 
         return outIngredients
+    }
+    fun formInstructionText(instruction: String): SpannableStringBuilder {
+        var outInstruction = SpannableStringBuilder("INSTRUCTION:\n")
+        outInstruction.setSpan(
+            StyleSpan(Typeface.BOLD), 0, outInstruction.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        outInstruction.append(instruction)
+        return outInstruction
     }
 }
