@@ -1,9 +1,5 @@
 package com.example.cookbook.ui.recipe_fragment
 
-import android.graphics.Typeface
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.style.StyleSpan
 import com.example.cookbook.application.App
 import com.example.cookbook.R
 import com.example.cookbook.domain.repository.retrofit.IRecipeRepo
@@ -80,14 +76,7 @@ class RecipePresenter : MvpPresenter<RecipeView>() {
 
     }
 
-    fun formInstructionText(instruction: String): SpannableStringBuilder {
-        var outInstruction = SpannableStringBuilder("INSTRUCTION:\n")
-        outInstruction.setSpan(
-            StyleSpan(Typeface.BOLD), 0, outInstruction.length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        outInstruction.append(instruction)
-        return outInstruction
-    }
+
     fun showError(){
         val context = App.instance.applicationContext
         viewState.apply{

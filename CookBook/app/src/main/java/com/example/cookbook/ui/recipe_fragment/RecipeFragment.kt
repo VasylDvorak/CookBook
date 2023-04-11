@@ -1,7 +1,11 @@
 package com.example.cookbook.ui.recipe_fragment
 
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,9 +71,7 @@ class RecipeFragment : MvpAppCompatFragment(), RecipeView, BackButtonListener {
     }
 
 
-    override fun init() {
-                  currentItemMenu.let { presenter.loadRecipe(it) }
-    }
+    override fun init() { currentItemMenu.let { presenter.loadRecipe(it) } }
 
 
     override fun showRecipe(currentRecipe: Meal) {
@@ -78,7 +80,7 @@ class RecipeFragment : MvpAppCompatFragment(), RecipeView, BackButtonListener {
             currentRecipe.strMealThumb?.let { imageLoader.loadInto(it, photoMeal) }
             nameMeal.text=currentRecipe.strMeal?:""
             areaMeal.text=currentRecipe.strArea?:""
-            instruction.text=presenter.formInstructionText(currentRecipe.strInstructions?:"")
+            instruction.text=formInstructionText(currentRecipe.strInstructions?:"")
             ingredients.text=presenter.ingredients()
             playMovie.setOnClickListener {
                 presenter.playMovie()
@@ -100,6 +102,15 @@ class RecipeFragment : MvpAppCompatFragment(), RecipeView, BackButtonListener {
     }
 
     override fun backPressed() = presenter.backPressed()
+
+    fun formInstructionText(instruction: String): SpannableStringBuilder {
+        var outInstruction = SpannableStringBuilder("INSTRUCTION:\n")
+        outInstruction.setSpan(
+            StyleSpan(Typeface.BOLD), 0, outInstruction.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        outInstruction.append(instruction)
+        return outInstruction
+    }
 
 }
 
