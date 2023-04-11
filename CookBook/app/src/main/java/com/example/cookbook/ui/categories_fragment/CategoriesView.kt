@@ -9,4 +9,6 @@ interface CategoriesView : MvpView {
     fun init()
     fun updateList()
     fun release()
+    fun progressCircle(indicate: Int)
+    fun showToastFragment(text: String)
 }

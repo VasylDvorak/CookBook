@@ -1,8 +1,8 @@
 package com.example.cookbook.ui.main_activity.interfaces
 
 import com.github.terrakok.cicerone.Screen
-import com.example.cookbook.entity.menu.Menu
-import com.example.cookbook.entity.categories.Category
+import com.example.cookbook.domain.entity.menu.Menu
+import com.example.cookbook.domain.entity.categories.Category
 
 interface IScreens {
 

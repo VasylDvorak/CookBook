@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cookbook.App
+import com.example.cookbook.application.App
 import com.example.cookbook.databinding.FragmentMenuBinding
 import com.example.cookbook.di.menu.MenuSubcomponent
-import com.example.cookbook.entity.categories.Category
+import com.example.cookbook.domain.entity.categories.Category
 import com.example.cookbook.ui.categories_fragment.CategoriesView
 import com.example.cookbook.ui.main_activity.interfaces.BackButtonListener
+import com.example.cookbook.ui.menu_fragment.menu_fragment_presenters.MenuPresenter
+import com.example.cookbook.ui.utils.Extensions
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -79,6 +81,13 @@ class MenuFragment : MvpAppCompatFragment(), CategoriesView, BackButtonListener 
     override fun release() {
         menuSubcomponent = null
         App.instance.releaseMenuSubComponent()
+    }
+    override fun progressCircle(indicate: Int) {
+        vb?.progressCircular?.visibility=indicate
+    }
+
+    override fun showToastFragment(text: String) {
+        Extensions().showToast(text)
     }
 
     override fun backPressed() = presenter.backPressed()

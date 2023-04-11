@@ -1,10 +1,18 @@
 package com.example.cookbook.ui.recipe_fragment
 
-import com.example.cookbook.domain.repo.retrofit.IRecipeRepo
-import com.example.cookbook.entity.categories.Category
-import com.example.cookbook.entity.menu.Menu
-import com.example.cookbook.entity.room.recipe.Meal
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
+import com.example.cookbook.application.App
+import com.example.cookbook.R
+import com.example.cookbook.domain.repository.retrofit.IRecipeRepo
+import com.example.cookbook.domain.entity.categories.Category
+import com.example.cookbook.domain.entity.menu.Menu
+import com.example.cookbook.domain.entity.recipe.Meal
 import com.example.cookbook.ui.main_activity.AndroidScreens
+import com.example.cookbook.ui.main_activity.GONE
+import com.example.cookbook.ui.main_activity.VISIBLE
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.core.Scheduler
 import moxy.MvpPresenter
@@ -29,19 +37,24 @@ class RecipePresenter : MvpPresenter<RecipeView>() {
 
     }
 
-    fun loadMenu(currentItemMenu: Menu) {
 
+
+    fun loadRecipe(currentItemMenu: Menu) {
+        viewState.progressCircle(VISIBLE)
         recipeRepo.getRecipes(currentItemMenu)
             .observeOn(mainThreadScheduler)
             .subscribe({ recipe ->
                 if(recipe.size !=0){
+                    viewState.progressCircle(GONE)
                     currentRecipe = recipe.get(0)
 
-                    viewState.showRecipe(currentRecipe)}
-            }, {
-                println("Error: ${it.message} ")
+                    viewState.showRecipe(currentRecipe)
+            }     else{
+                    showError()
+            }
+    }, {
+                showError()
             })
-
     }
 
 
@@ -65,5 +78,21 @@ class RecipePresenter : MvpPresenter<RecipeView>() {
             router.navigateTo(AndroidScreens().playMovie(it))
         }
 
+    }
+
+    fun formInstructionText(instruction: String): SpannableStringBuilder {
+        var outInstruction = SpannableStringBuilder("INSTRUCTION:\n")
+        outInstruction.setSpan(
+            StyleSpan(Typeface.BOLD), 0, outInstruction.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        outInstruction.append(instruction)
+        return outInstruction
+    }
+    fun showError(){
+        val context = App.instance.applicationContext
+        viewState.apply{
+            progressCircle(GONE)
+            showToastFragment(context!!.getString(R.string.check_internet))
+        }
     }
 }

@@ -6,7 +6,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookbook.databinding.ItemMenuBinding
 import com.example.cookbook.domain.image.IImageLoader
-import com.example.cookbook.domain.repo.MenItemView
+import com.example.cookbook.domain.repository.MenItemView
+import com.example.cookbook.ui.menu_fragment.menu_fragment_presenters.MenListPresenter
 import javax.inject.Inject
 
 class MenuRVAdapter(val presenter: MenListPresenter) :

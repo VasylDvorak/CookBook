@@ -1,6 +1,6 @@
 package com.example.cookbook.ui.recipe_fragment
 
-import com.example.cookbook.entity.room.recipe.Meal
+import com.example.cookbook.domain.entity.recipe.Meal
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
@@ -10,4 +10,6 @@ interface RecipeView : MvpView {
     fun init()
     fun release()
     fun showRecipe(currentRecipe: Meal)
+    fun progressCircle(indicate: Int)
+    fun showToastFragment(text: String)
 }

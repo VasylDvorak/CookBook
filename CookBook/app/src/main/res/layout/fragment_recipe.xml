@@ -18,6 +18,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/name_of_meal"
+        android:layout_marginLeft="@dimen/scroll_view_margin"
         android:textColor="@android:color/system_accent2_700"
         app:layout_constraintStart_toEndOf="@+id/photo_meal"
         app:layout_constraintTop_toTopOf="@+id/photo_meal"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/name_of_meal"
         android:text="@string/name_of_meal"
+        android:layout_marginLeft="@dimen/scroll_view_margin"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/photo_meal"
@@ -40,6 +42,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/area_meal"
+        android:layout_marginLeft="@dimen/scroll_view_margin"
         android:textColor="@android:color/system_accent2_700"
         app:layout_constraintStart_toEndOf="@+id/photo_meal"
         app:layout_constraintTop_toBottomOf="@+id/name_meal"
@@ -51,6 +54,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/area_meal"
         android:text="@string/area_meal"
+        android:layout_marginLeft="@dimen/scroll_view_margin"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/photo_meal"
@@ -62,10 +66,10 @@
         android:layout_width="@dimen/play_button_size"
         android:layout_height="@dimen/play_button_size"
         android:background="@drawable/baseline_play_circle_outline_24"
+        android:contentDescription="@string/play_movie"
         app:layout_constraintBottom_toTopOf="@+id/scroll_ingredients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photo_meal"
-        android:contentDescription="@string/play_movie"/>
+        app:layout_constraintStart_toEndOf="@+id/photo_meal" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/scroll_ingredients"
@@ -74,37 +78,57 @@
         app:cardBackgroundColor="#E1FDFB"
         app:layout_constraintHeight_percent=".22"
         app:layout_constraintTop_toBottomOf="@+id/photo_meal">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/scroll_view_margin"
-        android:scrollbars="vertical">
-        <TextView
-            android:id="@+id/ingredients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/ingredients"
-            android:text="@string/ingredients" />
-    </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/fragment_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/scroll_view_margin"
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@+id/ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/ingredients"
+                    android:text="@string/ingredients" />
+
+            </ScrollView>
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_circular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|center"
+                android:indeterminate="true" />
+        </FrameLayout>
+
     </com.google.android.material.card.MaterialCardView>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:cardBackgroundColor="@color/instruction_card_color"
         app:layout_constraintHeight_percent=".5"
         app:layout_constraintTop_toBottomOf="@+id/scroll_ingredients">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/scroll_view_margin"
-        android:scrollbars="vertical">
 
-        <TextView
-            android:id="@+id/instruction"
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/instruction"
-            android:text="@string/instruction" />
-    </ScrollView>
+            android:layout_margin="@dimen/scroll_view_margin"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/instruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/instruction"
+                android:text="@string/instruction" />
+        </ScrollView>
     </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

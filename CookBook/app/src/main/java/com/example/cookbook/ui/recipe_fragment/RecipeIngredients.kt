@@ -1,9 +1,13 @@
 package com.example.cookbook.ui.recipe_fragment
 
-import com.example.cookbook.entity.room.recipe.Meal
+import android.graphics.Typeface.BOLD
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
+import com.example.cookbook.domain.entity.recipe.Meal
 
 class RecipeIngredients {
-    fun ingredientsList(currentRecipe: Meal): String {
+    fun ingredientsList(currentRecipe: Meal): SpannableStringBuilder {
         var stringsIngredientsList: MutableList<Pair<String, String>> = mutableListOf()
         stringsIngredientsList.add(Pair(currentRecipe.strIngredient1 ?: "", currentRecipe.strMeasure1 ?: ""))
         stringsIngredientsList.add(Pair(currentRecipe.strIngredient2 ?: "", currentRecipe.strMeasure2 ?: ""))
@@ -26,12 +30,18 @@ class RecipeIngredients {
         stringsIngredientsList.add(Pair(currentRecipe.strIngredient19 ?: "", currentRecipe.strMeasure19 ?: ""))
         stringsIngredientsList.add(Pair(currentRecipe.strIngredient20 ?: "", currentRecipe.strMeasure20 ?: ""))
 
-        var outIngredients="INGREDIENTS:\n"
-        
+
+        var outIngredients = SpannableStringBuilder("INGREDIENTS:\n")
+        outIngredients.setSpan(StyleSpan(BOLD), 0, outIngredients.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        var totalString=""
         for(oneElement in stringsIngredientsList){
             if(oneElement.first != ""){
-                outIngredients ="${outIngredients+oneElement.first}: ${oneElement.second}\n"
+                totalString ="${totalString+oneElement.first}: ${oneElement.second}\n"
             } }
+
+        outIngredients.append(totalString)
 
         return outIngredients
     }

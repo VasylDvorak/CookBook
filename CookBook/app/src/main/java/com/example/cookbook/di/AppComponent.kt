@@ -2,13 +2,13 @@ package com.example.cookbook.di
 
 import com.example.cookbook.di.application_modules.*
 import com.example.cookbook.di.categories.CategoriesSubcomponent
-import com.example.cookbook.domain.cache.room.RoomPictureCache
-import com.example.cookbook.domain.cache.room.RoomRecipeCache
-import com.example.cookbook.domain.cache.room.RoomMenuCache
-import com.example.cookbook.domain.cache.room.RoomCategoriesCache
-import com.example.cookbook.domain.repo.retrofit.RetrofitMenuRepo
-import com.example.cookbook.domain.repo.retrofit.RetrofitCategoriesRepo
-import com.example.cookbook.domain.repo.retrofit.RetrofitRecipeRepo
+import com.example.cookbook.domain.cache.PictureCache
+import com.example.cookbook.domain.cache.RecipeCache
+import com.example.cookbook.domain.cache.MenuCache
+import com.example.cookbook.domain.cache.CategoriesCache
+import com.example.cookbook.domain.repository.retrofit.RetrofitMenuRepo
+import com.example.cookbook.domain.repository.retrofit.RetrofitCategoriesRepo
+import com.example.cookbook.domain.repository.retrofit.RetrofitRecipeRepo
 import com.example.cookbook.ui.main_activity.MainActivity
 import com.example.cookbook.ui.main_activity.MainPresenter
 import dagger.Component
@@ -31,14 +31,14 @@ interface AppComponent {
     fun inject(mainPresenter: MainPresenter)
 
     fun inject(retrofitCategoriesRepo: RetrofitCategoriesRepo)
-    fun inject(roomCategoriesCache: RoomCategoriesCache)
+    fun inject(roomCategoriesCache: CategoriesCache)
 
     fun inject(retrofitMenuRepo: RetrofitMenuRepo)
-    fun inject(roomMenuCache: RoomMenuCache)
+    fun inject(roomMenuCache: MenuCache)
 
     fun inject(retrofitRecipeRepo: RetrofitRecipeRepo)
-    fun inject(roomRecipeCache: RoomRecipeCache)
+    fun inject(roomRecipeCache: RecipeCache)
 
-    fun inject(roomPictureCache: RoomPictureCache)
+    fun inject(roomPictureCache: PictureCache)
 
 }

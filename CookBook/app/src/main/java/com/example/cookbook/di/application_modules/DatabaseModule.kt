@@ -1,13 +1,13 @@
 package com.example.cookbook.di.application_modules
 
 import androidx.room.Room
-import com.example.cookbook.App
-import com.example.cookbook.domain.cache.IPictureCache
-import com.example.cookbook.domain.cache.room.RoomCategoriesCache
-import com.example.cookbook.domain.cache.room.RoomMenuCache
-import com.example.cookbook.domain.cache.room.RoomPictureCache
-import com.example.cookbook.domain.cache.room.RoomRecipeCache
-import com.example.cookbook.entity.room.Database
+import com.example.cookbook.application.App
+import com.example.cookbook.domain.cache.cahe_interfaces.IPictureCache
+import com.example.cookbook.domain.cache.CategoriesCache
+import com.example.cookbook.domain.cache.MenuCache
+import com.example.cookbook.domain.cache.PictureCache
+import com.example.cookbook.domain.cache.RecipeCache
+import com.example.cookbook.data.room.Database
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -16,26 +16,26 @@ import javax.inject.Singleton
 class DatabaseModule {
     @Singleton
     @Provides
-    fun database(app: App): Database= Room.databaseBuilder(app, Database::class.java,
+    fun database(app: App): Database = Room.databaseBuilder(app, Database::class.java,
         Database.DB_NAME).build()
     @Singleton
     @Provides
-    fun roomCategoriesCache(): RoomCategoriesCache = RoomCategoriesCache()
+    fun roomCategoriesCache(): CategoriesCache = CategoriesCache()
     @Singleton
     @Provides
-    fun roomMenuCache(): RoomMenuCache = RoomMenuCache()
+    fun roomMenuCache(): MenuCache = MenuCache()
     @Singleton
     @Provides
-    fun roomRecipeCache(): RoomRecipeCache = RoomRecipeCache()
+    fun roomRecipeCache(): RecipeCache = RecipeCache()
 
     @Singleton
     @Provides
-    fun roomPictureCache(): RoomPictureCache = RoomPictureCache()
+    fun roomPictureCache(): PictureCache = PictureCache()
 
 
     @Singleton
     @Provides
-    fun pictureCache(): IPictureCache = RoomPictureCache()
+    fun pictureCache(): IPictureCache = PictureCache()
 
 
 

@@ -3,8 +3,8 @@ package com.example.cookbook.ui.main_activity
 import android.os.Bundle
 import com.github.terrakok.cicerone.Screen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import com.example.cookbook.entity.menu.Menu
-import com.example.cookbook.entity.categories.Category
+import com.example.cookbook.domain.entity.menu.Menu
+import com.example.cookbook.domain.entity.categories.Category
 import com.example.cookbook.ui.main_activity.interfaces.IScreens
 import com.example.cookbook.ui.play_movie_fragment.PLAY_MOVIE
 import com.example.cookbook.ui.play_movie_fragment.PlayMovieFragment

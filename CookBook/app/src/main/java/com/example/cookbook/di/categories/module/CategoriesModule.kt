@@ -1,14 +1,14 @@
 package com.example.cookbook.di.categories.module
 
 
-import com.example.cookbook.App
+import com.example.cookbook.application.App
 import com.example.cookbook.di.categories.ICategoriesScopeContainer
-import com.example.cookbook.domain.api.IDataSource
-import com.example.cookbook.domain.cache.ICategoriesCache
-import com.example.cookbook.domain.cache.room.RoomCategoriesCache
-import com.example.cookbook.domain.network.INetworkStatus
-import com.example.cookbook.domain.repo.ICategoriesRepo
-import com.example.cookbook.domain.repo.retrofit.RetrofitCategoriesRepo
+import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.cache.cahe_interfaces.ICategoriesCache
+import com.example.cookbook.domain.cache.CategoriesCache
+import com.example.cookbook.data.network.INetworkStatus
+import com.example.cookbook.domain.repository.ICategoriesRepo
+import com.example.cookbook.domain.repository.retrofit.RetrofitCategoriesRepo
 import com.example.cookbook.di.categories.CategoriesScope
 
 import dagger.Module
@@ -18,7 +18,7 @@ import dagger.Provides
 open class CategoriesModule {
     @Provides
     fun categoriesCache(): ICategoriesCache {
-        return RoomCategoriesCache()
+        return CategoriesCache()
     }
     @CategoriesScope
     @Provides

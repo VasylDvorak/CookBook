@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import com.example.cookbook.databinding.FragmentPlayMovieBinding
+import com.example.cookbook.ui.main_activity.GONE
 
 
 const val PLAY_MOVIE = "play_movie"
@@ -38,6 +41,7 @@ class PlayMovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val url = arguments?.getString(PLAY_MOVIE) ?: ""
+        binding.progressCircular.visibility=View.VISIBLE
         val webView = binding.webView
         if (url != "") {
             binding.emptyLink.visibility=View.GONE
@@ -52,6 +56,16 @@ class PlayMovieFragment : Fragment() {
         }else{
             binding.emptyLink.visibility=View.VISIBLE
             webView.visibility=View.GONE
+            binding?.progressCircular?.visibility=View.GONE
+        }
+
+        webView.webViewClient= object : WebViewClient()  {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                try{
+                    binding?.progressCircular?.visibility=View.GONE
+                }catch (e:NullPointerException ){}
+            }
         }
     }
+
 }

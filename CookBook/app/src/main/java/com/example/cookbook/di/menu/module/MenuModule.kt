@@ -1,14 +1,14 @@
 package com.example.cookbook.di.menu.module
 
-import com.example.cookbook.App
+import com.example.cookbook.application.App
 import com.example.cookbook.di.menu.IMenuScopeContainer
 import com.example.cookbook.di.menu.MenuScope
-import com.example.cookbook.domain.api.IDataSource
-import com.example.cookbook.domain.cache.IMenuCache
-import com.example.cookbook.domain.cache.room.RoomMenuCache
-import com.example.cookbook.domain.network.INetworkStatus
-import com.example.cookbook.domain.repo.retrofit.IMenuRepo
-import com.example.cookbook.domain.repo.retrofit.RetrofitMenuRepo
+import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.cache.cahe_interfaces.IMenuCache
+import com.example.cookbook.domain.cache.MenuCache
+import com.example.cookbook.data.network.INetworkStatus
+import com.example.cookbook.domain.repository.retrofit.IMenuRepo
+import com.example.cookbook.domain.repository.retrofit.RetrofitMenuRepo
 import dagger.Module
 import dagger.Provides
 
@@ -16,7 +16,7 @@ import dagger.Provides
 open class MenuModule {
     @Provides
     fun menuCache(): IMenuCache {
-        return RoomMenuCache()
+        return MenuCache()
     }
 
     @MenuScope

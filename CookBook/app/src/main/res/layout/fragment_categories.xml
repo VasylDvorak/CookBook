@@ -8,21 +8,35 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:textStyle="bold"
         android:gravity="center"
         android:text="@string/users_list"
         android:textColor="@android:color/holo_green_dark"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categories"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:paddingTop="@dimen/margin_rp_name"
-        android:paddingBottom="@dimen/margin_rp_name"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".97"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/margin_rp_name"
+            android:paddingBottom="@dimen/margin_rp_name" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

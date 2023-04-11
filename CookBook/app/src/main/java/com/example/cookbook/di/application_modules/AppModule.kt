@@ -1,6 +1,6 @@
 package com.example.cookbook.di.application_modules
 
-import com.example.cookbook.App
+import com.example.cookbook.application.App
 import dagger.Module
 import dagger.Provides
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

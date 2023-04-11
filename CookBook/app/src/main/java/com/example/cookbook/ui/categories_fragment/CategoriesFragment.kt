@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cookbook.App
+import com.example.cookbook.application.App
 import com.example.cookbook.di.categories.CategoriesSubcomponent
 import com.example.cookbook.ui.main_activity.interfaces.BackButtonListener
 import com.example.cookbook.databinding.FragmentCategoriesBinding
+import com.example.cookbook.ui.categories_fragment.categories_presenters.CategoriesPresenter
+import com.example.cookbook.ui.utils.Extensions
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -34,7 +36,6 @@ class CategoriesFragment : MvpAppCompatFragment(), CategoriesView, BackButtonLis
         FragmentCategoriesBinding.inflate(inflater, container, false).also {
             vb = it }.root
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         vb = null
@@ -60,6 +61,13 @@ class CategoriesFragment : MvpAppCompatFragment(), CategoriesView, BackButtonLis
         App.instance.releaseMenuSubComponent()
     }
 
+    override fun progressCircle(indicate: Int) {
+        vb?.progressCircular?.visibility=indicate
+    }
+
+    override fun showToastFragment(text: String) {
+        Extensions().showToast(text)
+    }
     override fun backPressed() = presenter.backPressed()
 
 }

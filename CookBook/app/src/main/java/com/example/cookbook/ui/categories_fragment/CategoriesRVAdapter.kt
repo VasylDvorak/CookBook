@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookbook.databinding.ItemCategoryBinding
 import com.example.cookbook.domain.image.IImageLoader
-import com.example.cookbook.ui.presenters.ICategoryListPresenter
+import com.example.cookbook.ui.categories_fragment.categories_presenters.ICategoryListPresenter
 import javax.inject.Inject
 
 class CategoriesRVAdapter(val presenter: ICategoryListPresenter) :
