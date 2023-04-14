@@ -8,9 +8,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.cookbook.application.App
 import com.example.cookbook.ui.main_activity.interfaces.BackButtonListener
-import com.example.cookbook.ui.main_activity.interfaces.MainView
+import com.example.cookbook.domain.view.MainView
 import com.example.cookbook.R
 import com.example.cookbook.databinding.ActivityMainBinding
+import com.example.cookbook.domain.presenters.MainPresenter
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity
@@ -18,8 +19,7 @@ import moxy.ktx.moxyPresenter
 import javax.inject.Inject
 
 private const val REQUEST_CODE = 100
-const val VISIBLE = 0
-const val GONE = 8
+
 class MainActivity : MvpAppCompatActivity(), MainView {
     @Inject
     lateinit var navigatorHolder: NavigatorHolder

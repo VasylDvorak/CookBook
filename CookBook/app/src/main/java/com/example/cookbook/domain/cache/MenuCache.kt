@@ -1,12 +1,12 @@
 package com.example.cookbook.domain.cache
 
 import com.example.cookbook.application.App
-import com.example.cookbook.domain.cache.cahe_interfaces.IMenuCache
 import com.example.cookbook.data.network.api.IDataSource
-import com.example.cookbook.domain.entity.menu.Menu
-import com.example.cookbook.domain.entity.categories.Category
 import com.example.cookbook.data.room.Database
 import com.example.cookbook.data.room.RoomMenu
+import com.example.cookbook.domain.cache.cahe_interfaces.IMenuCache
+import com.example.cookbook.domain.entity.entity_categories.Category
+import com.example.cookbook.domain.entity.entity_menu.Menu
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
@@ -14,9 +14,11 @@ import javax.inject.Inject
 class MenuCache : IMenuCache {
     @Inject
     lateinit var database: Database
-    init{
+
+    init {
         App.instance.appComponent.inject(this)
     }
+
     override fun newData(category: Category, api: IDataSource): Single<List<Menu>> {
         return category.strCategory?.let { url ->
             api.getMenu(url)
@@ -25,15 +27,16 @@ class MenuCache : IMenuCache {
                         val roomCategory = category.strCategory.let {
                             database.categoriesDao.findByCategory(it)
                         }
-                       val meals = listMenu.meals
+                        val meals = listMenu.meals
                         val roomMenu = meals.map {
                             RoomMenu(
-                                it.idMeal, it.strMeal?: "", it.strMealThumb ?: "",
+                                it.idMeal, it.strMeal ?: "", it.strMealThumb ?: "",
                                 roomCategory.idCategory
                             )
                         }
                         database.menuDao.insert(roomMenu)
-                       val forSavePicture = meals.map{ Category( it.idMeal,it.strMeal, it.strMealThumb,) }
+                        val forSavePicture =
+                            meals.map { Category(it.idMeal, it.strMeal, it.strMealThumb) }
                         Thread { PictureCache().newData(forSavePicture) }.start()
 
                         meals
@@ -47,8 +50,9 @@ class MenuCache : IMenuCache {
 
     override fun fromDataBaseData(category: Category): Single<List<Menu>> {
         return Single.fromCallable {
-            val roomCategory = category.strCategory.let { database.categoriesDao.findByCategory(it) }
-             database.menuDao.findForCategory(roomCategory.idCategory).map {
+            val roomCategory =
+                category.strCategory.let { database.categoriesDao.findByCategory(it) }
+            database.menuDao.findForCategory(roomCategory.idCategory).map {
                 Menu(it.idMeal, it.strMeal, it.strMealThumb)
             }
         }

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Environment
-import com.example.cookbook.domain.entity.categories.Category
+import com.example.cookbook.domain.entity.entity_categories.Category
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -22,14 +22,14 @@ class SaveURLtoFile {
         return saveImage(bitmap, category.strCategory)
     }
 
-    private fun saveImage(bitmap: Bitmap?, name_course: String): String {
+    private fun saveImage(bitmap: Bitmap?, nameCourse: String): String {
 
 
         val dir = Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_PICTURES + "/Cookbook"
         )
 
-        val file = File(dir, "course_" + name_course + ".jpg")
+        val file = File(dir, "course_" + nameCourse + ".jpg")
 
         try {
             if (!dir.exists()) {

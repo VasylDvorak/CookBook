@@ -4,12 +4,12 @@ import android.app.Application
 import com.example.cookbook.di.AppComponent
 import com.example.cookbook.di.DaggerAppComponent
 import com.example.cookbook.di.application_modules.AppModule
-import com.example.cookbook.di.recipe.IRecipeScopeContainer
-import com.example.cookbook.di.recipe.RecipeSubcomponent
-import com.example.cookbook.di.menu.IMenuScopeContainer
-import com.example.cookbook.di.menu.MenuSubcomponent
-import com.example.cookbook.di.categories.ICategoriesScopeContainer
-import com.example.cookbook.di.categories.CategoriesSubcomponent
+import com.example.cookbook.di.di_categories.CategoriesSubcomponent
+import com.example.cookbook.di.di_categories.ICategoriesScopeContainer
+import com.example.cookbook.di.di_menu.IMenuScopeContainer
+import com.example.cookbook.di.di_menu.MenuSubcomponent
+import com.example.cookbook.di.di_recipe.IRecipeScopeContainer
+import com.example.cookbook.di.di_recipe.RecipeSubcomponent
 
 
 class App : Application(), ICategoriesScopeContainer, IMenuScopeContainer, IRecipeScopeContainer {
@@ -43,6 +43,7 @@ class App : Application(), ICategoriesScopeContainer, IMenuScopeContainer, IReci
         categoriesSubcomponent?.menuSubcomponent().also {
             menuSubcomponent = it
         }
+
     fun initRecipeSubcomponent() =
         menuSubcomponent?.recipeSubcomponent().also {
             recipeSubcomponent = it
@@ -55,6 +56,7 @@ class App : Application(), ICategoriesScopeContainer, IMenuScopeContainer, IReci
     override fun releaseMenuSubComponent() {
         menuSubcomponent = null
     }
+
     override fun releaseRecipeSubComponent() {
         recipeSubcomponent = null
     }

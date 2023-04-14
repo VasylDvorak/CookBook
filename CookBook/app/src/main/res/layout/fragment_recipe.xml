@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/name_of_meal"
         android:layout_marginLeft="@dimen/scroll_view_margin"
-        android:textColor="@android:color/system_accent2_700"
+        android:textColor="@color/material_dynamic_secondary40"
         app:layout_constraintStart_toEndOf="@+id/photo_meal"
         app:layout_constraintTop_toTopOf="@+id/photo_meal"
         app:layout_constraintWidth_percent=".5" />
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/area_meal"
         android:layout_marginLeft="@dimen/scroll_view_margin"
-        android:textColor="@android:color/system_accent2_700"
+        android:textColor="@color/material_dynamic_secondary40"
         app:layout_constraintStart_toEndOf="@+id/photo_meal"
         app:layout_constraintTop_toBottomOf="@+id/name_meal"
         app:layout_constraintWidth_percent=".5" />
@@ -75,7 +75,7 @@
         android:id="@+id/scroll_ingredients"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:cardBackgroundColor="#E1FDFB"
+        app:cardBackgroundColor="@color/ingredients"
         app:layout_constraintHeight_percent=".22"
         app:layout_constraintTop_toBottomOf="@+id/photo_meal">
 
@@ -94,6 +94,7 @@
                     android:id="@+id/ingredients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize = "@dimen/recipe_text_size"
                     android:contentDescription="@string/ingredients"
                     android:text="@string/ingredients" />
 
@@ -126,6 +127,7 @@
                 android:id="@+id/instruction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize = "@dimen/recipe_text_size"
                 android:contentDescription="@string/instruction"
                 android:text="@string/instruction" />
         </ScrollView>
