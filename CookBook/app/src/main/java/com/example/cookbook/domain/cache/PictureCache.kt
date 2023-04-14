@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteConstraintException
 import com.example.cookbook.application.App
 import com.example.cookbook.domain.cache.cahe_interfaces.IPictureCache
 import com.example.cookbook.domain.entity.PictureEnity
-import com.example.cookbook.domain.entity.categories.Category
+import com.example.cookbook.domain.entity.entity_categories.Category
 import com.example.cookbook.data.room.Database
 import com.example.cookbook.data.room.RoomPicture
 import io.reactivex.rxjava3.core.Single
@@ -18,7 +18,7 @@ class PictureCache : IPictureCache {
     override fun newData(categories: List<Category>) {
          val roomPicture = categories.map {
             RoomPicture(
-                it.idCategory, it.strCategoryThumb ?: "", SaveURLtoFile().saveInFile(it)
+                it.idCategory, it.strCategoryThumb ?: "",SaveURLtoFile().saveInFile(it)
             )
         }
         try {

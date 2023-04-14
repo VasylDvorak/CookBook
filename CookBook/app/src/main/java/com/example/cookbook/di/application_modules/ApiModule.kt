@@ -1,9 +1,9 @@
 package com.example.cookbook.di.application_modules
 
 import com.example.cookbook.application.App
-import com.example.cookbook.data.network.api.IDataSource
 import com.example.cookbook.data.network.AndroidNetworkStatus
 import com.example.cookbook.data.network.INetworkStatus
+import com.example.cookbook.data.network.api.IDataSource
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -50,8 +50,10 @@ class ApiModule {
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(interceptor)
-        httpClient.addInterceptor(HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BODY))
+        httpClient.addInterceptor(
+            HttpLoggingInterceptor()
+                .setLevel(HttpLoggingInterceptor.Level.BODY)
+        )
         return httpClient.build()
     }
 

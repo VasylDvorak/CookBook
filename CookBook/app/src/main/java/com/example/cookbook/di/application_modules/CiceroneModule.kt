@@ -1,7 +1,7 @@
 package com.example.cookbook.di.application_modules
 
 import com.example.cookbook.ui.main_activity.AndroidScreens
-import com.example.cookbook.ui.main_activity.interfaces.IScreens
+import com.example.cookbook.navigation.IScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router

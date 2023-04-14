@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Environment
-import com.example.cookbook.domain.entity.categories.Category
+import com.example.cookbook.domain.entity.entity_categories.Category
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL

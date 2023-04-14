@@ -1,16 +1,16 @@
 package com.example.cookbook.di
 
 import com.example.cookbook.di.application_modules.*
-import com.example.cookbook.di.categories.CategoriesSubcomponent
+import com.example.cookbook.di.di_categories.CategoriesSubcomponent
+import com.example.cookbook.domain.cache.CategoriesCache
+import com.example.cookbook.domain.cache.MenuCache
 import com.example.cookbook.domain.cache.PictureCache
 import com.example.cookbook.domain.cache.RecipeCache
-import com.example.cookbook.domain.cache.MenuCache
-import com.example.cookbook.domain.cache.CategoriesCache
-import com.example.cookbook.domain.repository.retrofit.RetrofitMenuRepo
 import com.example.cookbook.domain.repository.retrofit.RetrofitCategoriesRepo
+import com.example.cookbook.domain.repository.retrofit.RetrofitMenuRepo
 import com.example.cookbook.domain.repository.retrofit.RetrofitRecipeRepo
 import com.example.cookbook.ui.main_activity.MainActivity
-import com.example.cookbook.ui.main_activity.MainPresenter
+import com.example.cookbook.domain.presenters.MainPresenter
 import dagger.Component
 import javax.inject.Singleton
 

@@ -4,7 +4,7 @@ import com.example.cookbook.application.App
 import com.example.cookbook.data.network.api.IDataSource
 import com.example.cookbook.domain.cache.RecipeCache
 import com.example.cookbook.data.network.INetworkStatus
-import com.example.cookbook.domain.entity.menu.Menu
+import com.example.cookbook.domain.entity.entity_menu.Menu
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 

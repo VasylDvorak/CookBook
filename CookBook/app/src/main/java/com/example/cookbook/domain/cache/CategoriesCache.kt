@@ -2,18 +2,21 @@ package com.example.cookbook.domain.cache
 
 
 import com.example.cookbook.application.App
-import com.example.cookbook.domain.cache.cahe_interfaces.ICategoriesCache
 import com.example.cookbook.data.network.api.IDataSource
-import com.example.cookbook.domain.entity.categories.Category
 import com.example.cookbook.data.room.Database
 import com.example.cookbook.data.room.RoomCategory
+import com.example.cookbook.domain.cache.cahe_interfaces.ICategoriesCache
+import com.example.cookbook.domain.entity.entity_categories.Category
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class CategoriesCache : ICategoriesCache {
     @Inject
     lateinit var database: Database
-    init{
+
+    init {
         App.instance.appComponent.inject(this)
     }
 
@@ -23,7 +26,7 @@ class CategoriesCache : ICategoriesCache {
         return api.getCategories()
             .flatMap { categories ->
                 Single.fromCallable {
-                   val input_categories = categories.categories
+                    val input_categories = categories.categories
                     val roomCategories = input_categories.map { category ->
 
                         RoomCategory(
@@ -35,7 +38,9 @@ class CategoriesCache : ICategoriesCache {
 
                     database.categoriesDao.insert(roomCategories)
 
-                    Thread { PictureCache().newData(input_categories) }.start()
+                    Observable.just(PictureCache().newData(input_categories))
+                        .subscribeOn(Schedulers.io())
+
                     input_categories
 
                 }
@@ -47,12 +52,15 @@ class CategoriesCache : ICategoriesCache {
         return Single.fromCallable {
             var out = database.categoriesDao.getAll().map { roomCategory ->
                 Category(
-                    roomCategory.idCategory, roomCategory.strCategory, roomCategory.strCategoryThumb,
+                    roomCategory.idCategory,
+                    roomCategory.strCategory,
+                    roomCategory.strCategoryThumb,
                     roomCategory.strCategoryDescription
                 )
             }
             out.forEach {
-                val roomCategoryFind = it.strCategory.let { database.categoriesDao.findByCategory(it) }
+                val roomCategoryFind =
+                    it.strCategory.let { database.categoriesDao.findByCategory(it) }
                 it.strCategoryThumb = database.pictureDao
                     .findForCategory(roomCategoryFind.idCategory).local_path
             }
