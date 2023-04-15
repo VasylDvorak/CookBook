@@ -29,7 +29,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/name_of_meal"
-        android:text="@string/name_of_meal"
+        android:hint="@string/name_of_meal"
+        android:textIsSelectable="true"
+        android:freezesText="true"
         android:layout_marginLeft="@dimen/scroll_view_margin"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -53,7 +55,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/area_meal"
-        android:text="@string/area_meal"
+        android:hint="@string/area_meal"
+        android:textIsSelectable="true"
+        android:freezesText="true"
         android:layout_marginLeft="@dimen/scroll_view_margin"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -96,7 +100,9 @@
                     android:layout_height="wrap_content"
                     android:textSize = "@dimen/recipe_text_size"
                     android:contentDescription="@string/ingredients"
-                    android:text="@string/ingredients" />
+                    android:hint="@string/ingredients"
+                    android:textIsSelectable="true"
+                    android:freezesText="true"/>
 
             </ScrollView>
 
@@ -129,7 +135,9 @@
                 android:layout_height="wrap_content"
                 android:textSize = "@dimen/recipe_text_size"
                 android:contentDescription="@string/instruction"
-                android:text="@string/instruction" />
+                android:hint="@string/instruction"
+                android:textIsSelectable="true"
+                android:freezesText="true"/>
         </ScrollView>
     </com.google.android.material.card.MaterialCardView>
 

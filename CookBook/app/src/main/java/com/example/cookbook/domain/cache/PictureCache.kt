@@ -23,7 +23,9 @@ class PictureCache : IPictureCache {
         }
         try {
             database.pictureDao.insert(roomPicture)
-        }catch (e: SQLiteConstraintException){}
+        }catch (e: SQLiteConstraintException){
+            println("Error to Save in data base")
+        }
     }
 
     override fun fromDataBaseData(): Single<List<PictureEnity>> {
