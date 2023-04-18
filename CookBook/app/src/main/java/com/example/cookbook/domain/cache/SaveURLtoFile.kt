@@ -24,7 +24,6 @@ class SaveURLtoFile {
 
     private fun saveImage(bitmap: Bitmap?, nameCourse: String): String {
 
-
         val dir = Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_PICTURES + "/Cookbook"
         )
@@ -47,12 +46,12 @@ class SaveURLtoFile {
             e.printStackTrace()
         }
 
-
         try {
             outputStream!!.flush()
         } catch (e: NullPointerException) {
             e.printStackTrace()
         }
+
         try {
             outputStream!!.close()
         } catch (e: NullPointerException) {

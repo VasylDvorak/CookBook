@@ -2,8 +2,8 @@ package com.example.cookbook.di.di_categories.module
 
 
 import com.example.cookbook.application.App
-import com.example.cookbook.data.network.INetworkStatus
-import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.utils.network.INetworkStatus
+import com.example.cookbook.domain.utils.network.api.IDataSource
 import com.example.cookbook.di.di_categories.CategoriesScope
 import com.example.cookbook.di.di_categories.ICategoriesScopeContainer
 import com.example.cookbook.domain.cache.CategoriesCache

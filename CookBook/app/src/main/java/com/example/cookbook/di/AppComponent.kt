@@ -11,6 +11,7 @@ import com.example.cookbook.domain.repository.retrofit.RetrofitMenuRepo
 import com.example.cookbook.domain.repository.retrofit.RetrofitRecipeRepo
 import com.example.cookbook.ui.main_activity.MainActivity
 import com.example.cookbook.domain.presenters.MainPresenter
+import com.example.cookbook.domain.repository.retrofit.PictureRepo
 import dagger.Component
 import javax.inject.Singleton
 
@@ -40,5 +41,8 @@ interface AppComponent {
     fun inject(roomRecipeCache: RecipeCache)
 
     fun inject(roomPictureCache: PictureCache)
+
+    fun inject(pictureRepo: PictureRepo)
+
 
 }

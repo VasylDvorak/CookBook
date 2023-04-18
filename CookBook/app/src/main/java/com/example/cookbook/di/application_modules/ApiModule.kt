@@ -1,9 +1,9 @@
 package com.example.cookbook.di.application_modules
 
 import com.example.cookbook.application.App
-import com.example.cookbook.data.network.AndroidNetworkStatus
-import com.example.cookbook.data.network.INetworkStatus
-import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.utils.network.AndroidNetworkStatus
+import com.example.cookbook.domain.utils.network.INetworkStatus
+import com.example.cookbook.domain.utils.network.api.IDataSource
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

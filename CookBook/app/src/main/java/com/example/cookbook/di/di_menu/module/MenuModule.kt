@@ -1,8 +1,8 @@
 package com.example.cookbook.di.di_menu.module
 
 import com.example.cookbook.application.App
-import com.example.cookbook.data.network.INetworkStatus
-import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.utils.network.INetworkStatus
+import com.example.cookbook.domain.utils.network.api.IDataSource
 import com.example.cookbook.di.di_menu.IMenuScopeContainer
 import com.example.cookbook.di.di_menu.MenuScope
 import com.example.cookbook.domain.cache.MenuCache
