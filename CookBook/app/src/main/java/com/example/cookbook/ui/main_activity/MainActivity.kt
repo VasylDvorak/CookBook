@@ -40,7 +40,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         App.instance.appComponent.inject(this)
         if (!(ContextCompat.checkSelfPermission(
                 this@MainActivity,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED
                     )
         ) {
@@ -74,7 +74,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         ActivityCompat.requestPermissions(
             this@MainActivity,
             arrayOf(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ),
             REQUEST_CODE
