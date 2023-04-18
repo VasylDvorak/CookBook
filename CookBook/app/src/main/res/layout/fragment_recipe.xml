@@ -71,7 +71,7 @@
         android:layout_height="@dimen/play_button_size"
         android:background="@drawable/baseline_play_circle_outline_24"
         android:contentDescription="@string/play_movie"
-        app:layout_constraintBottom_toTopOf="@+id/scroll_ingredients"
+        app:layout_constraintBottom_toBottomOf="@+id/photo_meal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/photo_meal" />
 
@@ -79,6 +79,8 @@
         android:id="@+id/scroll_ingredients"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/card_margin_top"
+        android:paddingTop="@dimen/recipe_padding"
         app:cardBackgroundColor="@color/ingredients"
         app:layout_constraintHeight_percent=".22"
         app:layout_constraintTop_toBottomOf="@+id/photo_meal">
@@ -120,7 +122,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:cardBackgroundColor="@color/instruction_card_color"
-        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintHeight_percent=".47"
+        android:layout_marginTop="@dimen/card_margin_top"
         app:layout_constraintTop_toBottomOf="@+id/scroll_ingredients">
 
         <ScrollView

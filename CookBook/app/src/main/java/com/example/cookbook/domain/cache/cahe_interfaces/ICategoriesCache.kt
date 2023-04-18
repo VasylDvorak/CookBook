@@ -1,6 +1,6 @@
 package com.example.cookbook.domain.cache.cahe_interfaces
 
-import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.utils.network.api.IDataSource
 import com.example.cookbook.domain.entity.entity_categories.Category
 import io.reactivex.rxjava3.core.Single
 

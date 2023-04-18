@@ -1,13 +1,14 @@
 package com.example.cookbook.domain.cache
 
 
+import android.database.sqlite.SQLiteConstraintException
 import com.example.cookbook.application.App
-import com.example.cookbook.data.network.api.IDataSource
 import com.example.cookbook.data.room.Database
 import com.example.cookbook.data.room.RoomCategory
 import com.example.cookbook.domain.cache.cahe_interfaces.ICategoriesCache
 import com.example.cookbook.domain.entity.entity_categories.Category
-import io.reactivex.rxjava3.core.Observable
+import com.example.cookbook.domain.repository.IPictureRepo
+import com.example.cookbook.domain.utils.network.api.IDataSource
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
@@ -15,6 +16,9 @@ import javax.inject.Inject
 class CategoriesCache : ICategoriesCache {
     @Inject
     lateinit var database: Database
+
+    @Inject
+    lateinit var picturesRepo: IPictureRepo
 
     init {
         App.instance.appComponent.inject(this)
@@ -38,9 +42,18 @@ class CategoriesCache : ICategoriesCache {
 
                     database.categoriesDao.insert(roomCategories)
 
-                    Observable.just(PictureCache().newData(inputCategories))
-                        .subscribeOn(Schedulers.io())
 
+                    picturesRepo.getPicturesDataForDTO(inputCategories)
+                        //   .observeOn(Schedulers.io()) // переключать на тот же io поток не надо
+                        .subscribe({ roomPicture ->
+                            try {
+                                database.pictureDao.insert(roomPicture)
+                            } catch (e: SQLiteConstraintException) {
+                                println("Error to Save in data base")
+                            }
+                        }, {
+                            println("Error to Save in smartphone")
+                        })
 
                     inputCategories
 

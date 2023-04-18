@@ -1,7 +1,7 @@
 package com.example.cookbook.domain.cache
 
 import com.example.cookbook.application.App
-import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.utils.network.api.IDataSource
 import com.example.cookbook.data.room.Database
 import com.example.cookbook.data.room.RoomRecipe
 import com.example.cookbook.domain.cache.cahe_interfaces.IRecipeCache

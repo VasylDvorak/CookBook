@@ -1,9 +1,9 @@
 package com.example.cookbook.domain.repository.retrofit
 
 import com.example.cookbook.application.App
-import com.example.cookbook.data.network.api.IDataSource
+import com.example.cookbook.domain.utils.network.api.IDataSource
 import com.example.cookbook.domain.cache.RecipeCache
-import com.example.cookbook.data.network.INetworkStatus
+import com.example.cookbook.domain.utils.network.INetworkStatus
 import com.example.cookbook.domain.entity.entity_menu.Menu
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
