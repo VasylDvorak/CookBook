@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 const val CURRENT_RECIPE = "current_recipe"
 
-class RecipeFragment : MvpAppCompatFragment(), RecipeView, BackButtonListener {
+class RecipeFragment : MvpAppCompatFragment(), RecipeView{
 
     private lateinit var currentItemMenu: Menu
     @Inject
@@ -112,7 +112,6 @@ class RecipeFragment : MvpAppCompatFragment(), RecipeView, BackButtonListener {
         App.instance.releaseRecipeSubComponent()
     }
 
-    override fun backPressed() = presenter.backPressed()
 
 
 }

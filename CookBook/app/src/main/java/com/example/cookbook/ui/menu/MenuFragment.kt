@@ -18,7 +18,7 @@ import moxy.ktx.moxyPresenter
 
 const val CURRENT_CATEGORY = "current_category"
 
-class MenuFragment : MvpAppCompatFragment(), CategoriesView, BackButtonListener {
+class MenuFragment : MvpAppCompatFragment(), CategoriesView {
 
     private lateinit var currentCategory: Category
 
@@ -95,6 +95,5 @@ class MenuFragment : MvpAppCompatFragment(), CategoriesView, BackButtonListener 
         Extensions().showToast()
     }
 
-    override fun backPressed() = presenter.backPressed()
 
 }

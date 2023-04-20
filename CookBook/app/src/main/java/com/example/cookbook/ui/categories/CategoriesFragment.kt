@@ -15,7 +15,7 @@ import com.example.cookbook.domain.utils.Extensions
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class CategoriesFragment : MvpAppCompatFragment(), CategoriesView, BackButtonListener {
+class CategoriesFragment : MvpAppCompatFragment(), CategoriesView {
 
     companion object {
         fun newInstance() = CategoriesFragment()
@@ -78,6 +78,5 @@ class CategoriesFragment : MvpAppCompatFragment(), CategoriesView, BackButtonLis
         Extensions().showToast()
     }
 
-    override fun backPressed() = presenter.backPressed()
 
 }

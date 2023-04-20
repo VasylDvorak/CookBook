@@ -65,12 +65,6 @@ class RecipePresenter : MvpPresenter<RecipeView>() {
         viewState.release()
     }
 
-    fun backPressed(): Boolean {
-        router.replaceScreen(
-            screen
-                .menu(Category(strCategory = currentRecipe.strCategory!!)))
-        return true
-    }
 
     private fun showInstruction() {
         viewState.showInstruction(formIngredientsInstruction

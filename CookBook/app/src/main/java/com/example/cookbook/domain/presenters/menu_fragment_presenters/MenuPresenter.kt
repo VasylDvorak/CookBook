@@ -81,10 +81,7 @@ class MenuPresenter: MvpPresenter<CategoriesView>() {
 
         viewState.release()
     }
-    fun backPressed(): Boolean {
-        router.replaceScreen(screen.categories())
-        return true
-    }
+
 
     fun showError(){
         viewState.apply{
