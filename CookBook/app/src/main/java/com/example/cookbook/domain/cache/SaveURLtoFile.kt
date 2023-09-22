@@ -41,7 +41,7 @@ class SaveURLtoFile {
         }
 
         try {
-            bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+            outputStream?.let { bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, it) }
         } catch (e: NullPointerException) {
             e.printStackTrace()
         }
